@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div id="group1" class="groupContainer">
+                    <h3>Group 1 Images</h3>
+                    <img src="https://picsum.photos/id/1/200/300" alt="">
+                    <img src="https://picsum.photos/id/2/200/300" alt="">
+                    <img src="https://picsum.photos/id/3/200/300" alt="">
+                    <img src="https://picsum.photos/id/4/200/300" alt="">
+                    <img src="https://picsum.photos/id/5/200/300" alt="">
+                    <img src="https://picsum.photos/id/6/200/300" alt="">
+                    <img src="https://picsum.photos/id/7/200/300" alt="">
+                </div>
+                <div id="group2" class="groupContainer">
+                    <h3>Group 2 Images</h3>
+                    <img src="https://picsum.photos/id/8/200/300" alt="">
+                    <img src="https://picsum.photos/id/9/200/300" alt="">
+                    <img src="https://picsum.photos/id/10/200/300" alt="">
+                    <img src="https://picsum.photos/id/11/200/300" alt="">
+                    <img src="https://picsum.photos/id/12/200/300" alt="">
+                    <img src="https://picsum.photos/id/13/200/300" alt="">
+                    <img src="https://picsum.photos/id/14/200/300" alt="">
+                </div>
+                <div id="group3" class="groupContainer">
+                    <h3>Group 3 Images</h3>
+                    <img src="https://picsum.photos/id/15/200/300" alt="">
+                    <img src="https://picsum.photos/id/16/200/300" alt="">
+                    <img src="https://picsum.photos/id/17/200/300" alt="">
+                    <img src="https://picsum.photos/id/18/200/300" alt="">
+                    <img src="https://picsum.photos/id/19/200/300" alt="">
+                    <img src="https://picsum.photos/id/20/200/300" alt="">
+                    <img src="https://picsum.photos/id/21/200/300" alt="">
+                </div>
+            </div>
+            <div class="col-6">
+               <img id="bigImage" src="" alt="" class="img-fluid">
+            </div>
+        </div>
+        
+</div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("img:not(#bigImage)").css("width","50px");
+            $("img").hover(function(){
+                // $(this) current element
+                //alert($(this).attr("src"))
+                //$("#source").html($(this).attr("src"));
+                $(this).attr("title",$(this).attr("src"));
+            });
+            $("img").click(function(){
+                //$(this).attr("src","image-not-found-300x169.jpg");
+                $("#bigImage").attr("src",$(this).attr("src"));
+            });
+        });
+        
+    </script>
+    
+</body>
+</html>

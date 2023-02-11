@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        #g1Btn,
+        #g2Btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span id="g1Btn" class="linkBtn">Group 1</span>
+        <span id="g2Btn" class="linkBtn">Group 2</span>
+        <span id="g3Btn" class="linkBtn">Group 3</span>
+        <hr>
+        <div id="group1" class="groupContainer">
+            <h3>Group 1 Images</h3>
+            <img src="https://picsum.photos/id/1/200/300" alt="">
+            <img src="https://picsum.photos/id/2/200/300" alt="">
+            <img src="https://picsum.photos/id/3/200/300" alt="">
+            <img src="https://picsum.photos/id/4/200/300" alt="">
+            <img src="https://picsum.photos/id/5/200/300" alt="">
+            <img src="https://picsum.photos/id/6/200/300" alt="">
+            <img src="https://picsum.photos/id/7/200/300" alt="">
+        </div>
+        <div id="group2" class="groupContainer">
+            <h3>Group 2 Images</h3>
+            <img src="https://picsum.photos/id/8/200/300" alt="">
+            <img src="https://picsum.photos/id/9/200/300" alt="">
+            <img src="https://picsum.photos/id/10/200/300" alt="">
+            <img src="https://picsum.photos/id/11/200/300" alt="">
+            <img src="https://picsum.photos/id/12/200/300" alt="">
+            <img src="https://picsum.photos/id/13/200/300" alt="">
+            <img src="https://picsum.photos/id/14/200/300" alt="">
+        </div>
+        <div id="group3" class="groupContainer">
+            <h3>Group 3 Images</h3>
+            <img src="https://picsum.photos/id/15/200/300" alt="">
+            <img src="https://picsum.photos/id/16/200/300" alt="">
+            <img src="https://picsum.photos/id/17/200/300" alt="">
+            <img src="https://picsum.photos/id/18/200/300" alt="">
+            <img src="https://picsum.photos/id/19/200/300" alt="">
+            <img src="https://picsum.photos/id/20/200/300" alt="">
+            <img src="https://picsum.photos/id/21/200/300" alt="">
+        </div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery("#group2,#group1,#group3").hide();
+            //click event
+            $("#g1Btn").click(function () {
+                $(".groupContainer").hide(1000, function () {
+                    $("#group1").show(1000);
+                });
+            });
+            $("#g2Btn").click(function () {
+                $(".groupContainer").hide(1000, function () {
+                    $("#group2").show(1000);
+                });
+            });
+            $("#g3Btn").click(function () {
+                $(".groupContainer").hide(1000, function () {
+                    $("#group3").show(1000);
+                });
+            });
+
+        });        
+    </script>
+
+</body>
+
+</html>

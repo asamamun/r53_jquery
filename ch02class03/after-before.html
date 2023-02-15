@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        .div{ margin:10px;padding:12px;
+        border:2px solid #666;
+        width:60px;
+        }
+        </style>
+</head>
+
+<body>
+    
+        <p>Click on any square below:</p>
+        <span id="result"> </span>
+        <div class="div" style="background-color:blue;"></div>
+        <div class="div" style="background-color:green;"></div>
+        <div class="div" style="background-color:red;"></div>
+    
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+
+        // $("div").click(function () {
+        // $(this).before('<div class="div"></div>' );
+        // });
+        //body is already in the document, on is checking dynamic div for click and run the fx
+        $("body").on("click","div",function(){
+            $(this).before('<div class="div"></div>' );
+        })
+
+        });
+        </script>
+        
+
+</body>
+
+</html>

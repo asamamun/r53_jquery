@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        title : 
+        <input type="text" id="product_title" value=""> <br>
+        desc : 
+        <textarea name="" id="d" cols="30" rows="10"></textarea> <br>
+        price: 
+        <input type="text" id="price">
+        <br>
+        active: <br>
+
+        Active: <input type="radio" name="a" id="" value="1">
+        inactive: <input type="radio" name="a" id="" value="0"> <br>
+        Category : <br>
+        Electronics : <input type="checkbox" class="cat" name="" id="" value="electronics">
+        Food : <input type="checkbox" class="cat" name="" id="" value="food">
+        Garments : <input type="checkbox" class="cat" name="" id="" value="garments"> <br>
+        <input type="button" value="Add" id="addproduct">
+        <input type="button" value="Clear Form" id="clearBtn">
+    </div>
+    <hr>
+    <div id="r"></div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+$("#addproduct").click(function(){
+    let t = $("#product_title").val();
+    let d = $("#d").val();
+    let p = $("#price").val();
+    let a = $("input:radio[name=a]:checked").val();
+    let cat = $("input[class='cat']:checked");
+    cat.each(function(){
+        console.log($(this).val());
+    })
+    //console.log(cat);
+    let h = "You have given the following values: <br>";
+    
+    h += "title: " + t + "<br>";
+    h += "Desc: " + d + "<br>";
+    h += "Price: " + p + "<br>";
+    h += "Active: " + a+ "<br>";
+    $("#r").html(h);
+
+});
+
+
+$("#clearBtn").click(function(){
+    $("#product_title").val('');
+    $("#d").val('');
+    $("#price").val('');
+})
+        });
+
+    </script>
+
+</body>
+
+</html>

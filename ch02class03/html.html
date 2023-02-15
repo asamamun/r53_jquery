@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        .invisible{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="gethtml">
+            get html
+        </button>
+        <button id="sethtml">
+            set html
+        </button>
+
+        <div id="group3" class="groupContainer">
+            <h3>Group 3 Images</h3>
+            <img src="https://picsum.photos/id/15/200/300" alt="">
+            <img src="https://picsum.photos/id/16/200/300" alt="">
+            <img src="https://picsum.photos/id/17/200/300" alt="">
+            <img src="https://picsum.photos/id/18/200/300" alt="">
+            <img src="https://picsum.photos/id/19/200/300" alt="">
+            <img src="https://picsum.photos/id/20/200/300" alt="">
+            <img src="https://picsum.photos/id/21/200/300" alt="">
+        </div>
+        <hr>
+        <textarea name="r" id="r" cols="30" rows="10"></textarea>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#gethtml").click(function(){
+                // $("#r").val($("#group3").text());
+                $("#r").val($("#group3").html());
+            })
+            $("#sethtml").click(function(){
+                $("#group3").html("");
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>

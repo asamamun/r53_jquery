@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        .invisible{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="showhide">
+            showhide
+        </button>
+
+        <div id="group3" class="groupContainer">
+            <h3>Group 3 Images</h3>
+            <img src="https://picsum.photos/id/15/200/300" alt="">
+            <img src="https://picsum.photos/id/16/200/300" alt="">
+            <img src="https://picsum.photos/id/17/200/300" alt="">
+            <img src="https://picsum.photos/id/18/200/300" alt="">
+            <img src="https://picsum.photos/id/19/200/300" alt="">
+            <img src="https://picsum.photos/id/20/200/300" alt="">
+            <img src="https://picsum.photos/id/21/200/300" alt="">
+        </div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#showhide").click(function(){
+                $("#group3").toggleClass("invisible");
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>

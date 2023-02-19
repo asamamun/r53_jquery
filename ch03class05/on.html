@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <input type="button" id="button" value="Create New Element" />
+        <div class="future">Already on page</div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#button').click(function () {
+                $('.container').append('<div class="future">I am a new div</div>');
+            });
+            $('div.container').on('click','div', function () {
+                $(this).css({ 'color': 'red', 'font-weight': 'bold' })
+                    .html('You clicked me');
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

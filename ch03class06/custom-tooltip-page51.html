@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        .container div {
+            border: 1px solid black;
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            font-family: verdana, arial;
+            font-size: 14px;
+        }
+
+        div#tip {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="tip" style="display:none;">YaY! I am a tooltip</div>
+        <div class="hoverMe">Hover me for a tooltip.</div>
+        <div>This div will not display a tooltip</div>
+        <div class="hoverMe">Hover me for a tooltip.</div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.hoverMe').hover(
+                function () {
+                    $('#tip').fadeIn('slow');
+                },
+                function () {
+                    $('#tip').fadeOut('slow');
+                });
+
+            $('.hoverMe').mousemove(function (e) {
+                // console.log(e);
+                var topPosition = e.pageY + 5;
+                var leftPosition = e.pageX + 5;
+                $('#tip').css(
+                    {
+                        'top': topPosition + 'px',
+                        'left': leftPosition + 'px'
+                    });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

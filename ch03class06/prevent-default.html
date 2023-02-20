@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+<a href="http://home.com" id="home">Home</a> |
+<a href="http://about.com" id="about">About</a> |
+<a href="#" id="products">Products</a> |
+<a href="#" id="contact">Contact</a> |
+<hr>
+<div id="mess"></div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("a").click(function(ev){
+                ev.preventDefault();
+                $("#mess").html("You clicked the "+$(this).attr("id")+" link")
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>

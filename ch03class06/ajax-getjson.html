@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/lightbox.css">
+</head>
+
+<body>
+    <div class="container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/pe6keTE9LbE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <button id="loadPBtn">Load Products</button>
+        <div class="row">
+            <div class="col-7">
+                <div id="productContainer">
+
+                </div>
+            </div>
+            <div id="spContainer" class="col-5">
+
+            </div>
+        </div>
+        
+
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script src="../assets/js/lightbox.js"></script>
+    <script>
+        $(document).ready(function () {
+            function showProducts(data){
+                let h = '';
+                data.forEach(e => {
+                    h += '<a class="ptitle" data-pid="'+e.id+'" href="javascript:void(0)"><h1>'+e.title+'</h1></a>';
+                    h += '<p>'+e.description+'</p>';
+                });
+                document.getElementById("productContainer").innerHTML = h;
+
+            }
+            function productDetails(d){
+                d.images.forEach(e=>{
+                    $("#spContainer").append('<a href="'+e+'" data-lightbox="productimage'+d.id+'"><img width="60px" src="'+e+'" alt=""></a>');
+
+                });
+            }
+            $("#loadPBtn").click(function(){
+                $.getJSON("https://dummyjson.com/products?skip=30",function(d){
+                console.log(d);
+                showProducts(d.products); 
+            })
+            })
+
+            //click
+            $("#productContainer").on("click",".ptitle",function(){
+               let pid =  $(this).data("pid");
+               $.getJSON("https://dummyjson.com/products/"+pid,function(d){
+// console.log(d);
+productDetails(d);
+               })
+            })
+           
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+
+
+        div#tip {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            background-color: rgba(128,128,128,0.6);
+            /* left:100px;
+            top:600px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="tip" style="display:none;">YaY! I am a tooltip</div>
+        <div id="group1">
+            <h3>Group 1 Images</h3>
+            <img class="hoverMe" src="https://picsum.photos/id/1/200/300" alt="" data-desc="image1 desc">
+            <img class="hoverMe" src="https://picsum.photos/id/2/200/300" alt="" data-desc="image2 desc">
+            <img class="hoverMe" src="https://picsum.photos/id/3/200/300" alt="" data-desc="image3 desc">
+            <img class="hoverMe" src="https://picsum.photos/id/4/200/300" alt="" data-desc="image4 desc">
+            <img class="hoverMe" src="https://picsum.photos/id/5/200/300" alt="" data-desc="image5 desc">
+            <img class="hoverMe" src="https://picsum.photos/id/6/200/300" alt="" data-desc="image6 desc">
+            <img class="hoverMe" src="https://picsum.photos/id/7/200/300" alt="" data-desc="image7 desc">
+        </div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.hoverMe').hover(
+                function () {
+                    
+                    $('#tip').html($(this).data('desc')).fadeIn('slow');
+                },
+                function () {
+                    $('#tip').html('').fadeOut('slow');
+                });
+
+            $('.hoverMe').mousemove(function (e) {
+                // console.log(e);
+                var topPosition = e.pageY + 5;
+                var leftPosition = e.pageX + 5;
+                $('#tip').css(
+                    {
+                        'top': topPosition + 'px',
+                        'left': leftPosition + 'px'
+                    });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

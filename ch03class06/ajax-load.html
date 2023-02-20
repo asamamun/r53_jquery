@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <marquee behavior="" direction="">testing AJAX</marquee>
+        <a href="#" data-page="pages/home.php">Home</a> | 
+        <a href="#" data-page="pages/about.php">About</a> | 
+        <a href="#" data-page="pages/products.php">Products</a> |
+        <a href="#" data-page="https://dummyjson.com/products/1">mZamin</a> 
+        <hr>
+        <div id="content">
+
+        </div> 
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("a").click(function(){
+                // alert($(this).data("page"))
+                $("#content").load($(this).data("page"));
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>

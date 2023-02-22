@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>jQuery does not animate colors.</h1>
+    <div class="container">
+        <div id="clickme"> Click here </div>
+        <div id="clickme2"> Color here </div>
+          <img id="book" src="../assets/images/1 (1).jpg" alt="">
+          <hr>
+          <p id="heading1">Testing background color change</p>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $( "#clickme" ).click(function() {
+  $( "#book" ).animate({
+    width: "400px",
+  }, 5000, function() {
+    $( "#book").animate({width:"480px"},5000);
+  });
+});
+
+$("#clickme2").click(function(){
+    // alert(5)
+    $("#heading1").animate({
+        opacity:0.7,
+                
+    });
+})
+        });
+
+    </script>
+
+</body>
+
+</html>

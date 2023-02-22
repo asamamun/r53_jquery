@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <label for="pid">Product ID</label>
+<input type="text" placeholder="product id" id="pid">
+<button id="showBtn">Show</button>
+<hr>
+<div id="productContainer">
+
+</div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function showproduct(item){
+                console.log(item.name);
+                console.log(item.price);
+            }
+
+            $("#showBtn").click(function(){
+                $.ajax({
+                  url: "getProductInfo.php",
+                //   url: "json_encode.php",
+                  method: "post",
+                  data:{
+                    id:$("#pid").val(),
+                    action : "search"
+                 },
+                 complete:function(d){
+                    console.log(d);
+                    // console.log(d.responseText);
+                    d = JSON.parse(d.responseText);
+                    if(d.success){
+                        showproduct(d.item)
+                    }
+                    else{
+                        alert("no product available");
+                    }
+                 }  
+                });
+            })
+
+
+
+            //ajax start and stop code for any document
+            $(document).ajaxStart(function() {
+    $("body").css("cursor","wait");
+});
+
+$(document).ajaxStop(function() {
+    $("body").css("cursor","pointer");
+});
+        });
+
+    </script>
+
+</body>
+
+</html>

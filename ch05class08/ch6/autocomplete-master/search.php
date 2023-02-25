@@ -11,7 +11,7 @@ if (isset($_GET['term'])){
 			'label' => $row['name'],
 			'value' => $row['name'],
 			'id' => $row['id'],
-			'test'=>"123"
+			
 		);
 	}
 	

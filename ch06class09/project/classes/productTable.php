@@ -9,7 +9,9 @@ if(isset($_GET['searchdata'])){
 // $selectQuery = "SELECT products.*,product_images.image as image FROM products,product_images where products.id=product_images.pid and products.uid='".$_SESSION['userId']."' and products.sku like '%".$sd."%' or products.name like '%".$sd."%' group by products.id   ORDER by products.id desc limit $recordstart,$pagesize";
 $selectQuery = "SELECT products.*, product_images.image as image
 FROM products LEFT JOIN product_images ON products.id = product_images.pid
-and  products.sku like '%".$sd."%' or products.name like '%".$sd."%' group by products.id ORDER by products.id desc limit $recordstart,$pagesize";
+where  products.sku like '%".$sd."%' or products.name like '%".$sd."%' group by products.id ORDER by products.id desc limit $recordstart,$pagesize";
+// echo $selectQuery;
+// exit;
 	}
 else {
 $selectQuery = "SELECT products.*, product_images.image as image
@@ -50,22 +52,23 @@ else {
 $table .= "<h4 class='text-danger'>No Records found</h4>";	
 	}
 
-echo $table;	
+// echo $table;	
 ?>
-<ul class="pagination">
 <?php
+$pagination = '<ul class="pagination">';
 for($i = 0; $i <$numberofpages;$i++){
 	$pagestartvalue = $i*$pagesize;
 	$pageendvalue = $pagestartvalue + $pagesize;
 	//if($pagestartvalue == $recordstart){
 	if(	$recordstart >=$pagestartvalue && $recordstart <$pageendvalue){
-	echo "<li class='active page-item'><a class='pageanchor page-link' data-recid='".$pagestartvalue."'>".($i+1)."</a></li>";
+		$pagination.="<li class='active page-item'><a class='pageanchor page-link' data-recid='".$pagestartvalue."'>".($i+1)."</a></li>";
 	}
 	else {
-		echo "<li class='page-item'><a class='pageanchor page-link' data-recid='".$pagestartvalue."'>".($i+1)."</a></li>";
+		$pagination.="<li class='page-item'><a class='pageanchor page-link' data-recid='".$pagestartvalue."'>".($i+1)."</a></li>";
 		}
 	} 
 $selectQueryResult->free();
 $conn->close();
+$pagination.= "</ul>";
+echo $pagination.$table.$pagination;
 ?>
-</ul>

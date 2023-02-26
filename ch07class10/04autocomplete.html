@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.theme.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="product">
+    </div>
+    <div id="productContainer">
+
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.6.3.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#product").autocomplete({
+                minLength: 2,
+                source: "04autocomplete.php",
+                select: function (e, u) {
+                    console.log(u.item);
+                    $("#productContainer").append("<li title='" + u.item.id + "'>" + u.item.label + "</li>");
+                    $("#product").val('').focus();
+                    return false;//important line, This will prevent the value from being updated to the text field.
+                }
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

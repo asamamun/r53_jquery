@@ -207,6 +207,10 @@
         //alert(data.message);
         //toast message start
         showToast('bottom-right',data.message, data.bg,data.icon, 4000);
+        setTimeout(() => {
+          window.location = "products.php";
+        }, 4000);
+        
         //toast message end
         if (!data.error) {
           // $("#logincontainer").hide(500,function(){
@@ -255,8 +259,15 @@
     }
     //call showProducts() function with 0 as argument
     showProducts(0);
+    //search start
+    $("#inputSuccess4").keyup(function(){
+      searchtable( $(this).val(),0);
+    });
+
+    //search end
     //searchtable function
     function searchtable(d, ind) {
+      // alert(d);
 				if (d == "") {
 					showProducts(ind);
 				} else {
@@ -277,7 +288,7 @@
 				"ul.pagination a.pageanchor",
 				function () {
 					var startfrom = $(this).data('recid');
-					alert(startfrom);
+					// alert(startfrom);
 					searchtable($("#inputSuccess4").val(), startfrom);
 					//showProducts(startfrom);
 				});

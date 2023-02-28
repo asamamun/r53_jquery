@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Chained Combo</title>
+<style type="text/css">
+body{font-family: "Trebuchet MS", Verdana, Arial;width:600px;}
+ul { list-style:none;margin:0pt;padding:0pt;width:525px;float:left; }
+li{ float:left;padding:10px;}
+p{border:1px solid #000; float:left;height:100px;width:500px;}
+select { width:100px;}
+</style>
+<script type="text/javascript" src="../script/jquery-1.3.2.min.js" language="javascript"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+$('select').change(getList);
+getList();
+function getList()
+{
+var url, target;
+var id = $(this).attr('id');
+var selectedValue = $(this).val();
+switch (id)
+{
+case 'countryList':
+if(selectedValue == '') return;
+url = 'newresults.php?find=states&id='+ selectedValue;
+target = 'stateList';
+break;
+case 'stateList':
+if($(this).val() == '') return;
+url = 'newresults.php?find=towns&id='+ selectedValue;
+target = 'townList';
+break;
+case 'townList':
+if($(this).val() == '') return;
+url = 'newresults.php?find=information&id='+ selectedValue;
+target = 'information';
+break;
+default:
+url = 'newresults.php?find=country';
+target = 'countryList';
+}
+$.get(
+url,
+{ },
+function(data)
+{
+$('#'+target).html(data);
+}
+)
+}
+});
+</script>
+</head>
+
+<body>
+<ul>
+<li>
+<strong>Country</strong>
+<select id="countryList">
+<option value="">select</option>
+</select>
+</li>
+<li>
+<strong>State</strong>
+<select id="stateList">
+<option value="">select</option>
+</select>
+</li>
+<li>
+<strong>Town</strong>
+<select id="townList">
+<option value="">select</option>
+</select>
+</li>
+</ul>
+<p id="information"></p>
+</body>
+</html>

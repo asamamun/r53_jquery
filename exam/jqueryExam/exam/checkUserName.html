@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Check Username</title>
+<style type="text/css">
+body{ font-family: "Trebuchet MS", Verdana, Arial; width:555px; }
+input,textarea { vertical-align:top; }
+label{ float:left; width:150px;}
+#error {font-weight:bold; color:#ff0000;}
+</style>
+<script type="text/javascript" src="../script/jquery-1.3.2.min.js" language="javascript"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+var checked = false;
+$('#check').click(function()
+{
+$('#error').empty();
+var inputValue = $('#loginName').val();
+if(jQuery.trim(inputValue) == ''){return false; }
+$.post(
+'check.php',
+{ username : inputValue },
+function(data)
+{
+if(data)
+{
+checked = true;
+$('#status').html('Username is available');
+}
+else
+{
+checked = false;
+$('#status').html('Username not available');
+return false;
+}
+}
+);
+});
+$('#loginForm').submit(function()
+{
+if(checked == false)
+{
+$('#error').html('Kindly check the username');
+return false;
+}
+else
+{
+return true;
+}
+});
+$('#loginName').focus(function()
+{
+checked == false;
+});
+});
+</script>
+</head>
+
+<body>
+<fieldset>
+<legend><strong>Add a function</strong></legend>
+<form action="" method="post" id="loginForm">
+<p>
+<label>Username </label>
+<input type="text" name="loginName" id="loginName"/>
+<a href="#" id="check"><strong>Check</strong></a>
+<span id="status" style="float:right;"></span>
+</p>
+<p>
+<label>Password</label>
+<input type="password" name="password"/>
+</p>
+<p>
+<span id="error"></span>
+</p>
+<p>
+<input type="submit" value="Save" name="dos"
+id="dosave"/>
+</p>
+</form>
+</fieldset>
+</body>
+</html>
